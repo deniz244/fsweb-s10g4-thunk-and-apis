@@ -25,7 +25,7 @@ export default function App() {
 
   function addToFavs() {
     dispatch(addFav(current));
-    //toast("Added to favorites!");
+    toast("Favorilere eklendi!");
     setTimeout(() => dispatch(fetchAnother()), 4000);
   }
 
@@ -81,7 +81,7 @@ export default function App() {
           <div className="flex flex-col gap-3">
             {favs?.length > 0 ? (
               favs.map((item) => (
-                <FavItem key={item.key} id={item.key} title={item.activity} />
+                <FavItem key={item.id} id={item.id} setup={item.setup} />
               ))
             ) : (
               <div className="bg-white p-6 text-center shadow-md">
@@ -91,6 +91,7 @@ export default function App() {
           </div>
         </Route>
       </Switch>
+      <ToastContainer />
     </div>
   );
 }
